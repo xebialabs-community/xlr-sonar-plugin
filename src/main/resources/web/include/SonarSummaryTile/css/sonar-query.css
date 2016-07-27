@@ -1,0 +1,62 @@
+/**
+ * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+ * FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+ */
+
+.sonar-query-summary-container {
+  width: 90%;
+  margin: auto;
+}
+
+.sonar-query-sonar-logo {
+  max-width: 138px;
+  height: auto;
+}
+
+.sonar-query-table {
+  width: 100%;
+}
+
+.sonar-query-right {
+  text-align: right;
+  margin-right: 1em;
+}
+
+.sonar-query-tile ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sonar-query-tile li {
+  margin-top: 4px;
+}
+
+.sonar-query-tile .legend {
+  margin-top: 40px;
+}
+
+.sonar-query-tile .counter {
+  text-align: center;
+}
+
+.sonar-query-tile .grid-container {
+  margin-top: 15px;
+}
+
+.sonar-query-tile .ui-grid-viewport {
+  overflow-x: hidden !important;
+  overflow-y: scroll;
+}
+
+.sonar-query-tile .highcharts-two-part-title {
+  line-height: 22px;
+}
+
+.sonar-query-tile .no-results {
+  margin: 70px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}

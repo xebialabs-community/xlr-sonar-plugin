@@ -1,0 +1,38 @@
+<!--
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+-->
+<div data-ng-controller="sonar.SonarQueryTileViewController as sonarQueryTile" class="sonar-query-tile dashboard-tile">
+
+    <div class="no-results" ng-if="!sonarQueryTile.tileConfigurationIsPopulated()">
+        Please configure this tile
+    </div>
+
+    <div class="no-results" ng-if="sonarQueryTile.statusesCounter === 0">
+        The specified query did not return any issues
+    </div>
+
+    <div ng-if="!sonarQueryTile.loading ">
+        <div id="summary">
+
+            <table class="table r.sonar-query-tile">
+                <tr ng-repeat="value in sonarQueryTile.result">
+                    <td>{{value.key}}</td>
+                    <td ng-if=" value.key != 'Arfifact Version' ">
+                        <a href="{{value.url}}" target="_blank" > {{value.value}} </a>
+                    </td>
+                    <td ng-if=" value.key == 'Arfifact Version' ">
+                        {{value.value}}
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <div ng-if="sonarQueryTile.loading" class="spinner" style="text-align: center">
+        <img src="static/@project.version@/img/big-ajax-loader.gif" alt="Loading..."/>
+    </div>
+
+</div>
