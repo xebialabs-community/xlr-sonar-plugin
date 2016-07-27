@@ -15,7 +15,7 @@ gradle build
 
 Copy the extension to the plugins folder of your XLD installation:
 ```
-cp ./build/libs/xlr-ui-permissions.jar $XLRelease_HOME/plugins
+cp ./build/libs/xlr-sonar-plugin-1.0.jar $XLRelease_HOME/plugins
 ```
 
 
