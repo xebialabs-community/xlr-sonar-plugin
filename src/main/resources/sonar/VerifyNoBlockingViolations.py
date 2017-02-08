@@ -18,21 +18,9 @@ sonarUrl = sonarServer['url']
 credentials = CredentialsFallback(sonarServer, username, password).getCredentials()
 content = None
 RESPONSE_OK_STATUS = 200
-metrics = ['blocking_violations', 'major_violations', 'sqale_index']
+metrics = ['blocking_violations', 'major_violations', 'sqale_index'] 
 
-def get_row_data(item):
-    row_map = {}
-    for column in detailsViewColumns:
-        if detailsViewColumns[column] and "." in detailsViewColumns[column]:
-            json_col = detailsViewColumns[column].split('.')
-            if item[json_col[0]]:
-                row_map[column] = item[json_col[0]][json_col[1]]
-        else:
-            row_map[column] = item[column]
-    row_map['link'] = sonarUrl + "nav_to.do?uri=%s.do?sys_id=%s" % (tableName, item['sys_id'])
-    return row_map  
-
-sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics))
+sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics.keys()))
 print sonarServerAPIUrl
 
 sonarResponse = XLRequest(sonarServerAPIUrl, 'GET', content, credentials['username'], credentials['password'], 'application/json').send()
@@ -50,16 +38,20 @@ if sonarResponse.status != RESPONSE_OK_STATUS:
 
 json_data = json.loads(sonarResponse.read())
 
-blocking_violations = int(json_data[0]['msr']['blocking_violations'])
-major_violations = int(json_data[0]['msr']['major_violations'])
-sqale_index = int(json_data[0]['msr']['sqale_index'])
+metrics_data = {}
+for item in json_data[0]['msr']:
+    metrics_data[item['key']] = item['val']
+
+blocking_violations = int(metrics_data.get('blocking_violations', 0))
+major_violations = int(metrics_data.get('major_violations', 0))
+sqale_index = int(metrics_data.get('sqale_index', 0))
 
 #
 # blocking_violations 0
 # major_violations 0
 # sqale_index < 3000
 #
-if blocking_violations == 0 and major_violations == 0 and sqale_index < 3000:
+if blocking_violations == 0 && major_violations == 0 && sqale_index < 3000:
     print "pass"
 else:
     print "fail"
