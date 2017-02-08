@@ -53,7 +53,7 @@ print "Metrics: blocking_violations=%s major_violations=%s sqale_index=%s\n" % (
 # major_violations 0
 # sqale_index < 3000
 #
-if blocking_violations == 0 and major_violations < 351 and sqale_index < 5000:
+if blocking_violations == 0 and major_violations < 351 and sqale_index < 9000:
     print "pass\n"
 else:
     print "fail\n"
