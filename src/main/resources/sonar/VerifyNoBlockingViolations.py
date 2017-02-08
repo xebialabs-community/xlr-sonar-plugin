@@ -20,7 +20,7 @@ content = None
 RESPONSE_OK_STATUS = 200
 metrics = ['blocking_violations', 'major_violations', 'sqale_index'] 
 
-sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics.keys()))
+sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics))
 print sonarServerAPIUrl
 
 sonarResponse = XLRequest(sonarServerAPIUrl, 'GET', content, credentials['username'], credentials['password'], 'application/json').send()
