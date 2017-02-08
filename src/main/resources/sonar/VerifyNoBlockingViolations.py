@@ -59,7 +59,7 @@ sqale_index = int(json_data[0]['msr']['sqale_index'])
 # major_violations 0
 # sqale_index < 3000
 #
-if blocking_violations == 0 && major_violations == 0 && sqale_index < 3000:
+if blocking_violations == 0 and major_violations == 0 and sqale_index < 3000:
     print "pass"
 else:
     print "fail"
