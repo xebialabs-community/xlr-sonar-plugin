@@ -32,7 +32,7 @@ def get_row_data(item):
     row_map['link'] = sonarUrl + "nav_to.do?uri=%s.do?sys_id=%s" % (tableName, item['sys_id'])
     return row_map  
 
-sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics.keys()))
+sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics))
 print sonarServerAPIUrl
 
 sonarResponse = XLRequest(sonarServerAPIUrl, 'GET', content, credentials['username'], credentials['password'], 'application/json').send()
