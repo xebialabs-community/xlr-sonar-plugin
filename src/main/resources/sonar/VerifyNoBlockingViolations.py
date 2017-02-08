@@ -46,6 +46,8 @@ blocking_violations = int(metrics_data.get('blocking_violations', 0))
 major_violations = int(metrics_data.get('major_violations', 0))
 sqale_index = int(metrics_data.get('sqale_index', 0))
 
+print "Metrics: blocking_violations=%s major_violations=%s sqale_index=%s" % (blocking_violations, major_violations, sqale_index)
+
 #
 # blocking_violations 0
 # major_violations 0
