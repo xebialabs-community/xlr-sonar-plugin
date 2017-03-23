@@ -7,7 +7,7 @@ deploy:
   provider: releases
   api_key:
     secure: I2mxNXppy7S4mv64lMZplq+V1oYr1zINcv3pNQcLY+q8oxYVq7NB0BZzvn9q4i2jz9oNjC0K7SCViGbpGLAtFVpdCHvJJFeBnFMlAoZ2ITsYouHCdq0neLxdCdrUQVTZt8FeYKYrMf5QRbrVdnd9b5ypp07D50bAm9WbNv6bOElF3RCb52NaJFVfljBRDW1Cxbf8WEjoHsv/tCmPrn2LcdmzakAl0gtrLaKiHFVYH5kLPyzOwVEb6k7n8ibZnw6DUAevC6HOv3TW335dAqyiGUiShp/C55sm8f3c23czbQAlCxMZhObqSontlSKFfBQcPIBemZP7ujsAvNTqv5pk1CqkV4msVR3RSvLxo4U41x6k8Zh63by/3lkJZey0tTUgc9UaVRgp+TUpkxBL494Za++J3YiOKn0oJv7HWlIWvb07PdqAJelVq6Q+DCPBTv8Zkp4MWGAYbZtucUw6d8XIi5azr5Cc+i5CTJRjl5+X7UCbHzrF0VKTMnxSX7oX6RWjh5XAqSadmB9DhI7Ly6aOUWaTw6krExcN8SgrRyj1IBFS/Pier9tVhyUIR8a72lMji+jSeuKRtY4npBo/BWSEyQHgQqAlyZNBmg00w7lD+rjGOYE2hrVTWojY/eJybFe73JV/nPSOaQckCbQz/RFCrPYyRxoLdgLbPdiSdx+wMjI=
-  file: build/libs/xlr-sonar-plugin-1.0.0.jar
+  file: build/libs/xlr-sonar-plugin-v1.1.0.jar
   skip_cleanup: true
   on:
     all_branches: true
