@@ -49,12 +49,12 @@
                             var keyName = Object.getOwnPropertyNames(sonardata)[metric];
                             var finalKeyName = tile.configurationProperties.metrics.value[keyName];
                             switch(keyName){
-                                case 'key' : result[keyName] = { key : 'Project Key', value : sonardata[keyName], url : sonardata['sonarUrl'] + '/dashboard/index/' + sonardata['id']}; break;
+                                case 'key' : result[keyName] = { key : 'Project Key', value : sonardata[keyName], url : sonardata['sonarUrl'] + '/overview?id=' + sonardata['key']}; break;
                                 case 'version' : result[keyName] = { key : 'Arfifact Version', value : sonardata[keyName]}; break;
                                 case 'name' : break;
                                 case 'id' : break;
                                 case 'sonarUrl' : break;
-                                default : result[keyName] = { key : finalKeyName, value : sonardata[keyName], url : sonardata['sonarUrl'] + '/drilldown/measures/' + sonardata['id'] + '?metric=' + keyName};
+                                default : result[keyName] = { key : finalKeyName, value : sonardata[keyName], url : sonardata['sonarUrl'] + '/component_measures/metric/' + keyName + '/list?id=' + sonardata['key']};
 
                             }
                             

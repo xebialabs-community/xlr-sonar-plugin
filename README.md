@@ -34,11 +34,12 @@ cp ./build/libs/xlr-sonar-plugin-1.0.jar $XLRelease_HOME/plugins
 
 #Usage#
 
-1. Go to the Settings > Configuration and define a Sonarqube Server Reference
+1. Go to the Settings > Configuration and define a Sonarqube Server Reference. eg https://builds.apache.org/analysis
+![Configuration](images/snapshot1.png)
 2. Then go to a release template and go to the release summary view
-3. Add the Sonar Tile from the drop down list
+3. Add the Sonar Tile from the drop down list. Provide a project id. eg. ant-master
 4. Specify what all metrics you want to show in summary ( Keys are the key used as Sonar metrics URI params, Value part is a Nice to Show Header for that metric)
-![Configuration] (/images/snapshot1.png)
+![Configuration](images/snapshot2.png)
 
 5. On saving, you'll get the Preview. You can even click on the Data items represented as hyperlinks that take you back to the Sonar Dashboard in a separate browser. 
-![Preview] (/images/snapshot2.png)
+![Preview](images/snapshot3.png)
