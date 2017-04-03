@@ -2,7 +2,7 @@
 Sonar Tile for XL Release
 
 
-# CI status #
+## CI status ##
 
 [![Build Status][xlr-sonar-plugin-travis-image] ][xlr-sonar-plugin-travis-url]
 [![Codacy Badge][xlr-sonar-plugin-codacy-image] ][xlr-sonar-plugin-codacy-url]
@@ -19,7 +19,7 @@ Sonar Tile for XL Release
 [xlr-sonar-plugin-license-url]: https://opensource.org/licenses/MIT
 
 
-# Installation #
+## Installation ##
 
 You can copy the pre build jar file from under the releases section under git repo
 
@@ -27,16 +27,16 @@ OR
 
 Build the project:
 ```
-gradle build
+./gradlew assemble
 ```
 
-Copy the extension to the plugins folder of your XLD installation:
+Copy the extension to the plugins folder of your XLR installation:
 ```
 cp ./build/libs/xlr-sonar-plugin-1.0.jar $XLRelease_HOME/plugins
 ```
 
 
-#Usage#
+## Usage ##
 
 1. Go to the Settings > Configuration and define a Sonarqube Server Reference. eg https://builds.apache.org/analysis
 ![Configuration](images/snapshot1.png)
