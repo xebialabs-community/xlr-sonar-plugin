@@ -8,6 +8,7 @@ Sonar Tile for XL Release
 [![Codacy Badge][xlr-sonar-plugin-codacy-image] ][xlr-sonar-plugin-codacy-url]
 [![Code Climate][xlr-sonar-plugin-code-climate-image] ][xlr-sonar-plugin-code-climate-url]
 [![License: MIT][xlr-sonar-plugin-license-image] ][xlr-sonar-plugin-license-url]
+[![Github All Releases][xlr-sonar-plugin-downloads-image] ]()
 
 [xlr-sonar-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xlr-sonar-plugin.svg?branch=master
 [xlr-sonar-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xlr-sonar-plugin
@@ -17,6 +18,7 @@ Sonar Tile for XL Release
 [xlr-sonar-plugin-code-climate-url]: https://codeclimate.com/github/xebialabs-community/xlr-sonar-plugin
 [xlr-sonar-plugin-license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
 [xlr-sonar-plugin-license-url]: https://opensource.org/licenses/MIT
+[xlr-sonar-plugin-downloads-image]: https://img.shields.io/github/downloads/xebialabs-community/xlr-sonar-plugin/total.svg
 
 
 ## Installation ##

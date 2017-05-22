@@ -11,46 +11,43 @@
 
 -->
 
-<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic">
 
-	<type type="sonarqube.Server" extends="configuration.HttpConnection">
+    <type type="sonarqube.Server" extends="configuration.HttpConnection">
         <property name="checkConfigurationPath" hidden="true" default="/api"/>
         <property name="scriptLocation" hidden="true" default="configuration/HttpConnectionCheck.py"/>
     </type>
 
     <type type="sonar.VerifyNoBlockingViolations" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="sonar/VerifyNoBlockingViolations.py" hidden="true" />
+        <property name="scriptLocation" default="sonar/VerifyNoBlockingViolations.py" hidden="true"/>
 
-        <property name="iconLocation" default="sonar/sonar.png" hidden="true" />
+        <property name="iconLocation" default="sonar/sonar.png" hidden="true"/>
         <property name="taskColor" hidden="true" default="#757575"/>
 
-        <property category="input" name="sonarServer" referenced-type="sonarqube.Server" kind="ci" label="Server" description="SONAR server id to connect to"/>
-        <property category="input" name="username" required="false" description="Overrides the username used to connect to the server"/>
-        <property category="input" name="password" password="true" required="false" description="Overrides the password used to connect to the server"/>
+        <property category="input" name="sonarServer" referenced-type="sonarqube.Server" kind="ci" label="Server"
+                  description="SONAR server id to connect to"/>
+        <property category="input" name="username" required="false"
+                  description="Overrides the username used to connect to the server"/>
+        <property category="input" name="password" password="true" required="false"
+                  description="Overrides the password used to connect to the server"/>
 
-        <property category="input" name="resource" required="true" description="Namespace of project to pull metrics for eg. org.apache.cordova" />
+        <property category="input" name="resource" required="true"
+                  description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
     </type>
 
-    <type type="sonar.VerifyNoBlockingViolations" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="sonar/VerifyNoBlockingViolations.py" hidden="true" />
-
-        <property name="iconLocation" default="sonar/sonar.png" hidden="true" />
-        <property name="taskColor" hidden="true" default="#757575"/>
-
-        <property category="input" name="sonarServer" referenced-type="sonarqube.Server" kind="ci" label="Server" description="SONAR server id to connect to"/>
-        <property category="input" name="username" required="false" description="Overrides the username used to connect to the server"/>
-        <property category="input" name="password" password="true" required="false" description="Overrides the password used to connect to the server"/>
-
-        <property category="input" name="resource" required="true" description="Namespace of project to pull metrics for eg. org.apache.cordova" />
-    </type>
-
-	<type type="sonar.SonarSummaryTile" label="sonar Summary Tile query tile" extends="xlrelease.Tile">
-        <property name="uri" hidden="true" default="include/SonarSummaryTile/sonar-query-summary-view.html" />
+    <type type="sonar.SonarSummaryTile" label="sonar Summary Tile query tile" extends="xlrelease.Tile">
+        <property name="uri" hidden="true" default="include/SonarSummaryTile/sonar-query-summary-view.html"/>
         <property name="title" description="Tile title" default="SONAR Summary"/>
-        <property category="input" name="sonarServer" referenced-type="sonarqube.Server" kind="ci" label="Server" description="SONAR server id to connect to"/>
-        <property category="input" name="username" required="false" description="Overrides the username used to connect to the server"/>
-        <property category="input" name="password" password="true" required="false" description="Overrides the password used to connect to the server"/>
-        <property category="input" name="resource" required="true" description="Namespace of project to pull metrics for eg. org.apache.cordova" />
-        <property category="input" name="metrics" required="true" description="Metrics to pull" kind="map_string_string"/>
+        <property category="input" name="sonarServer" referenced-type="sonarqube.Server" kind="ci" label="Server"
+                  description="SONAR server id to connect to"/>
+        <property category="input" name="username" required="false"
+                  description="Overrides the username used to connect to the server"/>
+        <property category="input" name="password" password="true" required="false"
+                  description="Overrides the password used to connect to the server"/>
+        <property category="input" name="resource" required="true"
+                  description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
+        <property category="input" name="metrics" required="true" description="Metrics to pull"
+                  kind="map_string_string"/>
     </type>
 </synthetic>
