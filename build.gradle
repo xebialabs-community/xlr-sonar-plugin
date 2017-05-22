@@ -18,11 +18,6 @@ xlDocker {
   runPortMapping = '15516:5516'
 }
 
-xlrDocker {
-    compileVersion = 'v6.0.0.1'
-    runVersion = 'v6.0.0.1'
-}
-
 license {
   header rootProject.file('License.md')
   strictCheck false
