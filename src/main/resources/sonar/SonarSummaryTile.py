@@ -25,7 +25,7 @@ credentials = CredentialsFallback(sonarServer, username, password).getCredential
 content = None
 RESPONSE_OK_STATUS = 200
 print "Sending content %s" % content
-sonarServerAPIUrl = '/api/measures/component?componentKey=%s&metricKeys=%s' % (resource,','.join(metrics.keys()))
+sonarServerAPIUrl = '/api/measures/component?componentKey=%s&metricKeys=%s' % (resource, ','.join(metrics.keys()))
 http_request = HttpRequest(sonarServer, credentials['username'], credentials['password'])
 sonarResponse = http_request.get(sonarServerAPIUrl)
 if sonarResponse.status == RESPONSE_OK_STATUS:
@@ -36,7 +36,7 @@ if sonarResponse.status == RESPONSE_OK_STATUS:
     data1['name'] = json_data['component']['name']
     data1['sonarUrl'] = sonarUrl
     for item in json_data['component']['measures']:
-    	data1[item['metric']] = item['value']
+        data1[item['metric']] = item['value']
     data = data1
 else:
     error = json.loads(sonarResponse.getResponse())

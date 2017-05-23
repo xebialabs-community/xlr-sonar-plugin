@@ -12,16 +12,15 @@
 -->
 
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic">
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
+           xmlns="http://www.xebialabs.com/deployit/synthetic">
 
     <type type="sonarqube.Server" extends="configuration.HttpConnection">
         <property name="checkConfigurationPath" hidden="true" default="/api"/>
         <property name="scriptLocation" hidden="true" default="configuration/HttpConnectionCheck.py"/>
     </type>
 
-    <type type="sonar.VerifyNoBlockingViolations" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="sonar/VerifyNoBlockingViolations.py" hidden="true"/>
-
+    <type type="sonar.Task" extends="xlrelease.PythonScript" virtual="true">
         <property name="iconLocation" default="sonar/sonar.png" hidden="true"/>
         <property name="taskColor" hidden="true" default="#757575"/>
 
@@ -31,9 +30,25 @@
                   description="Overrides the username used to connect to the server"/>
         <property category="input" name="password" password="true" required="false"
                   description="Overrides the password used to connect to the server"/>
-
         <property category="input" name="resource" required="true"
                   description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
+    </type>
+
+    <type type="sonar.VerifyNoBlockingViolations" extends="sonar.Task">
+        <property name="scriptLocation" default="sonar/VerifyNoBlockingViolations.py" hidden="true"/>
+    </type>
+
+    <type type="sonar.VerifyQuality" extends="sonar.Task">
+        <property name="scriptLocation" default="sonar/VerifyQuality.py" hidden="true"/>
+
+        <property category="input" name="lineCoverage" required="false" kind="integer" default="-1"
+                  description="The minimum expected line coverage for the project (percentage). -1 to ignore."/>
+        <property category="input" name="complexity" required="false" kind="integer" default="-1"
+                  description="The maximum expected complexity for the project (number). -1 to ignore."/>
+        <property category="input" name="duplicatedLinesDensity" required="false" kind="integer" default="-1"
+                  description="The maximum expected duplicated lines density for the project (percentage). -1 to ignore."/>
+        <property category="input" name="violations" required="false" kind="integer" default="-1"
+                  description="The maximum expected violations for the project (number). -1 to ignore."/>
     </type>
 
     <type type="sonar.SonarSummaryTile" label="sonar Summary Tile query tile" extends="xlrelease.Tile">
@@ -47,7 +62,8 @@
                   description="Overrides the password used to connect to the server"/>
         <property category="input" name="resource" required="true"
                   description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
-        <property category="input" name="metrics" required="true" description="Metrics to pull"
+        <property category="input" name="metrics" required="true"
+                  description="Metrics to pull. For example: line_coverage, complexity, violations, ncloc"
                   kind="map_string_string"/>
     </type>
 </synthetic>

@@ -20,6 +20,8 @@ Sonar Tile for XL Release
 [xlr-sonar-plugin-license-url]: https://opensource.org/licenses/MIT
 [xlr-sonar-plugin-downloads-image]: https://img.shields.io/github/downloads/xebialabs-community/xlr-sonar-plugin/total.svg
 
+## Requirements ##
++ SonarQube 5.4+
 
 ## Installation ##
 
@@ -49,3 +51,6 @@ cp ./build/libs/xlr-sonar-plugin-1.0.jar $XLRelease_HOME/plugins
 
 5. On saving, you'll get the Preview. You can even click on the Data items represented as hyperlinks that take you back to the Sonar Dashboard in a separate browser. 
 ![Preview](images/snapshot3.png)
+
+## References ##
++ [SonarQube REST api](https://sonarqube.com/web_api)
