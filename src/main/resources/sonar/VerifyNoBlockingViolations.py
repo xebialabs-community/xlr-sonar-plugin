@@ -24,7 +24,7 @@ sonarUrl = sonarServer['url']
 credentials = CredentialsFallback(sonarServer, username, password).getCredentials()
 content = None
 RESPONSE_OK_STATUS = 200
-metrics = ['blocking_violations', 'major_violations', 'sqale_index'] 
+metrics = ['blocking_violations', 'major_violations', 'sqale_index']
 
 sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics))
 print sonarServerAPIUrl
@@ -39,7 +39,6 @@ if sonarResponse.status != RESPONSE_OK_STATUS:
     else:
         print "Failed to run query in Sonar"
         sonarResponse.errorDump()
-    
     sys.exit(1)
 
 json_data = json.loads(sonarResponse.read())
