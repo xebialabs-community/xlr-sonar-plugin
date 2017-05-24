@@ -19,7 +19,7 @@ sonar_url = sonarServer['url']
 sonar_server_api_url = '/api/measures/component?componentKey=%s&metricKeys=%s' % (resource, ','.join(metrics.keys()))
 http_request = HttpRequest(sonarServer, username, password)
 sonar_response = http_request.get(sonar_server_api_url)
-if not sonar_response.isSuccessful():
+if sonar_response.isSuccessful():
     json_data = json.loads(sonar_response.getResponse())
     data1 = {}
     data1['id'] = json_data['component']['id']
