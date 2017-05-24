@@ -26,10 +26,11 @@ content = None
 RESPONSE_OK_STATUS = 200
 metrics = ['blocking_violations', 'major_violations', 'sqale_index']
 
-sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource,','.join(metrics))
+sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource, ','.join(metrics))
 print sonarServerAPIUrl
 
-sonarResponse = XLRequest(sonarServerAPIUrl, 'GET', content, credentials['username'], credentials['password'], 'application/json').send()
+sonarResponse = XLRequest(sonarServerAPIUrl, 'GET', content, credentials['username'], credentials['password'],
+                          'application/json').send()
 if sonarResponse.status != RESPONSE_OK_STATUS:
     error = json.loads(sonarResponse.read())
     if 'Invalid table' in error['error']['message']:
@@ -51,7 +52,8 @@ blocking_violations = int(metrics_data.get('blocking_violations', 0))
 major_violations = int(metrics_data.get('major_violations', 0))
 sqale_index = int(metrics_data.get('sqale_index', 0))
 
-print "Metrics: blocking_violations=%s major_violations=%s sqale_index=%s\n" % (blocking_violations, major_violations, sqale_index)
+print "Metrics: blocking_violations=%s major_violations=%s sqale_index=%s\n" % (
+blocking_violations, major_violations, sqale_index)
 
 #
 # blocking_violations 0
