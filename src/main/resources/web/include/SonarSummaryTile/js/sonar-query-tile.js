@@ -30,28 +30,33 @@
         predefinedColors['Testing'] = '#FFA500';
 
 
-        if ($scope.xlrTile) {
-            // summary mode
-            tile = $scope.xlrTile.tile;
+        if ($scope.xlrDashboard) {
+            // summary page
+            vm.release = $scope.xlrDashboard.release;
+            vm.tile = $scope.xlrTile.tile;
+            if (vm.tile.properties == null) {
+                vm.config = vm.tile.configurationProperties;
+            } else {
+                // new style since 7.0
+                vm.config = vm.tile.properties;
+            }
         }
 
         function tileConfigurationIsPopulated() {
-            var config = tile.configurationProperties;
-            return !_.isEmpty(config.sonarServer);
+            return !_.isEmpty(vm.config.sonarServer);
         }
 
         function load(config) {
             if (tileConfigurationIsPopulated()) {
                 vm.loading = true;
-                SonarQueryService.executeQuery(tile.id, config).then(
+                SonarQueryService.executeQuery(vm.tile.id, config).then(
                     function (response) {
-                        console.log()
                         var sonardata = response.data.data;
                         var result = new Object();
                         for (var metric = 0 ; metric < Object.getOwnPropertyNames(sonardata).length ; metric++)
                         {
                             var keyName = Object.getOwnPropertyNames(sonardata)[metric];
-                            var finalKeyName = tile.configurationProperties.metrics.value[keyName];
+                            var finalKeyName = vm.config.metrics.value[keyName];
                             switch(keyName){
                                 case 'key' : result[keyName] = { key : 'Project Key', value : sonardata[keyName], url : sonardata['sonarUrl'] + '/overview?id=' + sonardata['key']}; break;
                                 case 'version' : result[keyName] = { key : 'Arfifact Version', value : sonardata[keyName]}; break;
@@ -65,7 +70,6 @@
                         }
                         vm.result = result;
                         $scope.xlrTile.title = tile.title + " : " + sonardata['name'];
-                        console.log(result);
                     }
                 ).finally(function () {
                     vm.loading = false;

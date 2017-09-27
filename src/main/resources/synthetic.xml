@@ -54,6 +54,7 @@
     <type type="sonar.SonarSummaryTile" label="sonar Summary Tile query tile" extends="xlrelease.Tile">
         <property name="uri" hidden="true" default="include/SonarSummaryTile/sonar-query-summary-view.html"/>
         <property name="title" description="Tile title" default="SONAR Summary"/>
+        <property name="embedded" kind="boolean" hidden="true" default="true" required="false"/>  <!-- XLR 7.0.0 compatibility -->
         <property category="input" name="sonarServer" referenced-type="sonarqube.Server" kind="ci" label="Server"
                   description="SONAR server id to connect to"/>
         <property category="input" name="username" required="false"
