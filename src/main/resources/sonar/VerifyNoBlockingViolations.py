@@ -24,7 +24,7 @@ sonarUrl = sonarServer['url']
 credentials = CredentialsFallback(sonarServer, username, password).getCredentials()
 content = None
 RESPONSE_OK_STATUS = 200
-metrics = ['blocking_violations', 'major_violations', 'sqale_index']
+metrics = ['blocker_violations', 'major_violations', 'sqale_index']
 
 sonarServerAPIUrl = sonarUrl + '/api/resources?resource=%s&metrics=%s' % (resource, ','.join(metrics))
 print sonarServerAPIUrl
@@ -48,19 +48,19 @@ metrics_data = {}
 for item in json_data[0]['msr']:
     metrics_data[item['key']] = item['val']
 
-blocking_violations = int(metrics_data.get('blocking_violations', 0))
+blocker_violations = int(metrics_data.get('blocking_violations', 0))
 major_violations = int(metrics_data.get('major_violations', 0))
 sqale_index = int(metrics_data.get('sqale_index', 0))
 
-print "Metrics: blocking_violations=%s major_violations=%s sqale_index=%s\n" % (
-blocking_violations, major_violations, sqale_index)
+print "Metrics: blocker_violations=%s major_violations=%s sqale_index=%s\n" % (
+blocker_violations, major_violations, sqale_index)
 
 #
-# blocking_violations 0
+# blocker_violations 0
 # major_violations 0
 # sqale_index < 3000
 #
-if blocking_violations == 0 and major_violations < 351 and sqale_index < 9000:
+if blocker_violations == 0 and major_violations < 351 and sqale_index < 9000:
     print "pass\n"
 else:
     print "fail\n"
