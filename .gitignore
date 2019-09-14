@@ -3,3 +3,7 @@
 build
 supervisord.*
 xlr-sonar-plugin.iml
+bin/
+.classpath
+.project
+.settings

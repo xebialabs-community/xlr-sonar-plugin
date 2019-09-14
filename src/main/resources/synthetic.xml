@@ -15,14 +15,25 @@
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
            xmlns="http://www.xebialabs.com/deployit/synthetic">
 
-    <type type="sonar.VerifyNoBlockingViolations" extends="sonar.task" label="SonarQube: Verify No Blocking Violations">
+    <type type="sonarqube.Task" extends="sonar.task" virtual="true">
         <property name="taskColor" hidden="true" default="#D94C3D"/>
-        <property name="iconLocation" default="sonar/sonar.svg" hidden="true"/>
+        <property name="iconLocation" default="sonarqube/sonar.svg" hidden="true"/>
+        <property category="input" name="sonarServer" referenced-type="sonar.Server" kind="ci" label="Server"
+                  required="true" description="SonarQube server id to connect to"/>
+        <property category="input" name="username" required="false"
+                  description="Optionally, override the username used to connect to the server"/>
+        <property category="input" name="password" password="true" required="false"
+                  description="Optionally, override the password used to connect to the server"/>
+        <property category="input" name="resource" required="true"
+                  description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
     </type>
 
-    <type type="sonar.VerifyQuality" extends="sonar.task" label="SonarQube: Verify Quality">
-        <property name="taskColor" hidden="true" default="#D94C3D"/>
-        <property name="iconLocation" default="sonar/sonar.svg" hidden="true"/>
+    <type type="sonarqube.VerifyNoBlockingViolations" extends="sonarqube.Task" label="SonarQube: Verify No Blocking Violations">
+        <property name="scriptLocation" default="sonarqube/VerifyNoBlockingViolations.py" hidden="true"/>
+    </type>
+
+    <type type="sonarqube.VerifyQuality" extends="sonarqube.Task" label="SonarQube: Verify Quality">
+        <property name="scriptLocation" default="sonarqube/VerifyQuality.py" hidden="true"/>
         <property category="input" name="lineCoverage" required="false" kind="integer" default="-1"
                   description="The minimum expected line coverage for the project (percentage). -1 to ignore."/>
         <property category="input" name="complexity" required="false" kind="integer" default="-1"
@@ -33,4 +44,9 @@
                   description="The maximum expected violations for the project (number). -1 to ignore."/>
     </type>
 
+    <type type="sonarqube.SetLatestAnalysisVersion" extends="sonarqube.Task" label="SonarQube: Set Latest Analysis Version">
+        <property name="scriptLocation" default="sonarqube/SetLatestAnalysisVersion.py" hidden="true"/>
+        <property category="input" name="version" required="true"
+                  description="Set the latest analysis event to this version"/>
+    </type>
 </synthetic>
