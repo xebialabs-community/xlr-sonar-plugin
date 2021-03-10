@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!--
 
-    Copyright 2019 XEBIALABS
+    Copyright 2021 XEBIALABS
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -11,21 +11,18 @@
 
 -->
 
-<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
-           xmlns="http://www.xebialabs.com/deployit/synthetic">
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
+    xmlns="http://www.xebialabs.com/deployit/synthetic">
 
     <type type="sonarqube.Task" extends="sonar.task" virtual="true">
         <property name="taskColor" hidden="true" default="#D94C3D"/>
         <property name="iconLocation" default="sonarqube/sonar.svg" hidden="true"/>
-        <property category="input" name="sonarServer" referenced-type="sonar.Server" kind="ci" label="Server"
-                  required="true" description="SonarQube server id to connect to"/>
-        <property category="input" name="username" required="false"
-                  description="Optionally, override the username used to connect to the server"/>
-        <property category="input" name="password" password="true" required="false"
-                  description="Optionally, override the password used to connect to the server"/>
-        <property category="input" name="resource" required="true"
-                  description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
+        <property category="input" name="sonarServer" referenced-type="sonar.Server" kind="ci" label="Server" required="true" description="SonarQube server id to connect to"/>
+        <property category="input" name="username" required="false" description="Optionally, override the username used to connect to the server"/>
+        <property category="input" name="password" password="true" required="false" description="Optionally, override the password used to connect to the server"/>
+        <property category="input" name="resource" required="true" description="Namespace of project to pull metrics for eg. org.apache.cordova"/>
+        <property category="input" name="branch" required="false" description="Branch key. Not available in the community edition."/>
+        <property category="input" name="pullRequest" required="false" description="Pull request id. Not available in the community edition."/>
     </type>
 
     <type type="sonarqube.VerifyNoBlockingViolations" extends="sonarqube.Task" label="SonarQube: Verify No Blocking Violations">
@@ -34,19 +31,14 @@
 
     <type type="sonarqube.VerifyQuality" extends="sonarqube.Task" label="SonarQube: Verify Quality">
         <property name="scriptLocation" default="sonarqube/VerifyQuality.py" hidden="true"/>
-        <property category="input" name="lineCoverage" required="false" kind="integer" default="-1"
-                  description="The minimum expected line coverage for the project (percentage). -1 to ignore."/>
-        <property category="input" name="complexity" required="false" kind="integer" default="-1"
-                  description="The maximum expected complexity for the project (number). -1 to ignore."/>
-        <property category="input" name="duplicatedLinesDensity" required="false" kind="integer" default="-1"
-                  description="The maximum expected duplicated lines density for the project (percentage). -1 to ignore."/>
-        <property category="input" name="violations" required="false" kind="integer" default="-1"
-                  description="The maximum expected violations for the project (number). -1 to ignore."/>
+        <property category="input" name="lineCoverage" required="false" kind="integer" default="-1" description="The minimum expected line coverage for the project (percentage). -1 to ignore."/>
+        <property category="input" name="complexity" required="false" kind="integer" default="-1" description="The maximum expected complexity for the project (number). -1 to ignore."/>
+        <property category="input" name="duplicatedLinesDensity" required="false" kind="integer" default="-1" description="The maximum expected duplicated lines density for the project (percentage). -1 to ignore."/>
+        <property category="input" name="violations" required="false" kind="integer" default="-1" description="The maximum expected violations for the project (number). -1 to ignore."/>
     </type>
 
     <type type="sonarqube.SetLatestAnalysisVersion" extends="sonarqube.Task" label="SonarQube: Set Latest Analysis Version">
         <property name="scriptLocation" default="sonarqube/SetLatestAnalysisVersion.py" hidden="true"/>
-        <property category="input" name="version" required="true"
-                  description="Set the latest analysis event to this version"/>
+        <property category="input" name="version" required="true" description="Set the latest analysis event to this version"/>
     </type>
 </synthetic>
